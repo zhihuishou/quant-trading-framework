@@ -37,3 +37,8 @@ Thumbs.db
 # Cache
 .cache/
 *.cache
+
+# Personal files (keep your data private!)
+my_portfolio.py
+my_trades.py
+portfolio_report.txt
