@@ -42,3 +42,7 @@ Thumbs.db
 my_portfolio.py
 my_trades.py
 portfolio_report.txt
+dataset/
+reports/trading-analysis/
+*.xlsx
+*.xls
