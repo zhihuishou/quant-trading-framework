@@ -50,57 +50,93 @@ python my_portfolio.py
 - ✅ 个股表现排名
 - ✅ 优化建议
 
-### 3. 分析你的交易记录
+### 3. 分析你的真实交易记录
 
-编辑 `my_trades.py` 文件，填入你的历史交易：
-
-```python
-my_trades = [
-    {
-        'symbol': '比亚迪',
-        'entry_date': '2024-01-10',
-        'exit_date': '2024-02-15',
-        'entry_price': 250,
-        'exit_price': 280,
-        'shares': 300,
-        'pnl': (280-250)*300
-    },
-    # 添加更多交易...
-]
-```
-
-然后运行：
+将你的交易明细Excel文件放到 `dataset/` 目录下，然后运行：
 
 ```bash
-python my_trades.py
+python tools/analyze_real_trades.py
 ```
 
-### 4. 运行示例策略
+你会得到一份全面的交易分析报告，包括：
+- ✅ 胜率、盈亏比、期望收益
+- ✅ 最佳/最差交易分析
+- ✅ 各股票表现统计
+- ✅ 当前持仓分析
+- ✅ 问题诊断和改进建议
+
+### 4. 对比基准表现
+
+分析你的交易表现与沪深300指数的对比：
+
+```bash
+python tools/analyze_vs_benchmark.py
+```
+
+你会得到专业的投资指标：
+- ✅ 夏普比率（Sharpe Ratio）
+- ✅ Beta系数
+- ✅ Alpha（超额收益）
+- ✅ 信息比率（IR）
+- ✅ 综合评分和改进建议
+
+### 5. 批量获取A股数据
+
+获取所有A股的历史数据用于量化回测：
+
+```bash
+python tools/fetch_all_stocks.py
+```
+
+支持三种模式：
+- 测试模式（10只股票）
+- 小批量模式（100只股票）
+- 完整模式（5000+只股票，约2小时）
+
+### 6. 运行示例策略
 
 ```bash
 python examples/simple_ma_strategy.py
+python examples/dual_momentum_demo.py
 ```
 
 ## 项目结构
 
 ```
 quant-framework/
-├── src/
+├── src/                # 核心框架代码
 │   ├── data/          # 数据获取和处理模块
 │   ├── strategy/      # 策略基类和实现
 │   ├── backtest/      # 回测引擎
 │   ├── risk/          # 风险管理工具
 │   ├── analysis/      # 持仓分析工具
 │   └── utils/         # 工具函数（技术指标、性能评估）
+├── tools/             # 实用工具脚本
+│   ├── analyze_real_trades.py    # 真实交易分析
+│   ├── analyze_vs_benchmark.py   # 基准对比分析
+│   └── fetch_all_stocks.py       # A股数据批量获取
 ├── examples/          # 示例策略代码
 ├── docs/              # 文档
 │   ├── technical-indicators.md      # 技术指标说明
 │   ├── portfolio-analysis-guide.md  # 持仓分析指南
+│   ├── dual-momentum-strategy.md    # 双动量策略说明
 │   └── macro-analysis-notes.md      # 宏观分析笔记
+├── reports/           # 分析报告输出目录
+│   └── trading-analysis/  # 交易分析报告
 ├── my_portfolio.py    # 你的持仓分析（个人使用）
 ├── my_trades.py       # 你的交易分析（个人使用）
 └── requirements.txt   # Python依赖
 ```
+
+## 实用工具
+
+### 交易分析工具
+
+- **真实交易分析**: 分析历史交易记录，计算胜率、盈亏比、期望收益
+- **基准对比分析**: 对比沪深300，计算夏普比率、Beta、Alpha
+- **A股数据获取**: 批量下载所有A股历史数据
+
+详见：[工具使用说明](tools/README.md)
 
 ## 技术指标
 
